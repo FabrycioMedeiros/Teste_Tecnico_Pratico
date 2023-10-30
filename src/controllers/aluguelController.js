@@ -23,7 +23,7 @@ class AluguelController {
     const id = req.params.id;
     try {
       const registroDeUtilizacao = await aluguel.findByIdAndUpdate(id, req.body);
-      res.status(200).json({ message: "Registro de utilização finalizado com sucesso", registroDeUtilizacao });
+      res.status(201).json({ message: "Registro de utilização finalizado com sucesso", registroDeUtilizacao });
     } catch (erro) {
       res.status(500).json({ message: `${erro.message} - falha ao finalizar registro de utilização` });
     }

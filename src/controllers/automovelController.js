@@ -1,5 +1,5 @@
-import automovel from "../models/Automovel.js";
-import { motorista } from "../models/Motorista.js"
+import { automovel } from "../models/Automovel.js";
+import { motorista } from "../models/Motorista.js";
 
 class AutomovelController {
 
@@ -27,9 +27,9 @@ class AutomovelController {
 
       try {
         const motoristaEncontrado = await motorista.findById(novoAutomovel.motorista);
-        const cadastroCompleto = { ...novoAutomovel, motorista: { ... motoristaEncontrado._doc }};
+        const cadastroCompleto = { ...novoAutomovel, motorista: { ...motoristaEncontrado._doc }};
         const automovelCriado = await automovel.create(cadastroCompleto);
-        res.status(201).json({ message: "Cadastrado com sucesso", Automovel: novoAutomovel });
+        res.status(201).json({ message: "Cadastrado com sucesso", Automovel: automovelCriado });
       } catch (erro) {
         res.status(500).json({ message: `${erro.message} - falha ao cadastrar veiculo` })
       }
@@ -41,7 +41,7 @@ class AutomovelController {
         await automovel.findByIdAndUpdate(id, req.body);
         res.status(200).json({ message: "Veiculo atualizado"});
       } catch (erro) {
-        res.status(500).json({ message: `${erro.message} - falha na atualização do veiculo` });
+        res.status(500).json({ message: `${erro.message} - Falha na atualização do veiculo` });
       }
     };
 

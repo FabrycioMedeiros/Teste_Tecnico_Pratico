@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { motoristaSchema } from "./Motorista.js";
 
+
 const automovelSchema = new mongoose.Schema({
     id: { type: mongoose.Schema.Types.ObjectId },
     placa: { type: String, required: true },
@@ -11,4 +12,4 @@ const automovelSchema = new mongoose.Schema({
 
 const automovel = mongoose.model("automovel", automovelSchema);
 
-export default automovel;
+export { automovel, automovelSchema };

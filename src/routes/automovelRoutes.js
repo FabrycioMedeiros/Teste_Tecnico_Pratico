@@ -3,12 +3,12 @@ import AutomovelController from "../controllers/automovelController.js";
 
 const routes = express.Router();
 
-routes.get("/automovel", AutomovelController.listarAutomoveis);
-routes.get("/automovel/busca-cor", AutomovelController.listarAutomoveisPorCor);
-routes.get("/automovel/busca-marca", AutomovelController.listarAutomoveisPorMarca);
-routes.get("/automovel/:id", AutomovelController.listarAutomoveisPorId);
-routes.post("/automovel", AutomovelController.cadastrarAutomoveis);
-routes.put("/automovel/:id", AutomovelController.atualizarAutomoveis);
-routes.delete("/automovel/:id", AutomovelController.excluirAutomoveis);
+routes.get("/api/automovel", AutomovelController.listarAutomoveis);
+routes.get("/api/automovel/busca-cor", AutomovelController.listarAutomoveisPorCor);
+routes.get("/api/automovel/busca-marca", AutomovelController.listarAutomoveisPorMarca);
+routes.get("/api/automovel/:id", AutomovelController.listarAutomoveisPorId);
+routes.post("/api/automovel", AutomovelController.cadastrarAutomoveis);
+routes.put("/api/automovel/:id", AutomovelController.atualizarAutomoveis);
+routes.delete("/api/automovel/:id", AutomovelController.excluirAutomoveis);
 
 export default routes;

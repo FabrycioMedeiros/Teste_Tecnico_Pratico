@@ -3,6 +3,7 @@ import { motorista } from "../models/Motorista.js";
 class MotoristaController {
 
     static async listarMotoristas (req, res) {
+      const params = JSON.parse(req.query);
       try {
         const listaMotorista = await motorista.find({});
         res.status(200).json(listaMotorista);

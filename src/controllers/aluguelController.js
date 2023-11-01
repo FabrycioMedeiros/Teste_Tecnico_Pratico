@@ -15,9 +15,9 @@ class AluguelController {
       const registroDeUtilizacao = await aluguel.create({...novoRegistro, automovel, motorista});
       res.status(201).json({ message: "Registro de utilização criado com sucesso", registroDeUtilizacao });
     } catch (erro) {
-      res.status(500).json({ message: `${erro.message} - falha ao criar registro de utilização` });
+      res.status(500).json({ message: `${erro.message} - Falha ao criar registro de utilização` });
     }
-  }
+  };
 
   static async finalizarRegistroDeUtilizacao(req, res) {
     const id = req.params.id;
@@ -25,9 +25,9 @@ class AluguelController {
       const registroDeUtilizacao = await aluguel.findByIdAndUpdate(id, req.body);
       res.status(201).json({ message: "Registro de utilização finalizado com sucesso", registroDeUtilizacao });
     } catch (erro) {
-      res.status(500).json({ message: `${erro.message} - falha ao finalizar registro de utilização` });
+      res.status(500).json({ message: `${erro.message} - Falha ao finalizar registro de utilização` });
     }
-  }
+  };
 
   static async listarRegistrosDeUtilizacao(req, res) {
     try {
@@ -37,9 +37,9 @@ class AluguelController {
         .exec();
       res.status(200).json(registrosDeUtilizacao);
     } catch (erro) {
-      res.status(500).json({ message: `${erro.message} - falha ao listar registros de utilização` });
+      res.status(500).json({ message: `${erro.message} - Falha ao listar registros de utilização` });
     }
-  }
+  };
 }
 
 export default AluguelController;

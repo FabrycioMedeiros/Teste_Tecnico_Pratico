@@ -8,7 +8,7 @@ class AutomovelController {
         const listaAutomovel = await automovel.find({});
         res.status(200).json(listaAutomovel);
       } catch (erro) {
-        res.status(500).json({ message: `${erro.message} - falha na requisição` });
+        res.status(500).json({ message: `${erro.message} - Falha na requisição` });
       }
     };
 
@@ -18,20 +18,19 @@ class AutomovelController {
         const automovelEncontrado = await automovel.findById(id);
         res.status(200).json(automovelEncontrado);
       } catch (erro) {
-        res.status(500).json({ message: `${erro.message} - falha na requisição do veiculo` });
+        res.status(500).json({ message: `${erro.message} - Falha na requisição do veiculo` });
       }
     };
 
     static async cadastrarAutomoveis (req, res) {
       const novoAutomovel = req.body;
-
       try {
         const motoristaEncontrado = await motorista.findById(novoAutomovel.motorista);
         const cadastroCompleto = { ...novoAutomovel, motorista: { ...motoristaEncontrado._doc }};
         const automovelCriado = await automovel.create(cadastroCompleto);
         res.status(201).json({ message: "Cadastrado com sucesso", Automovel: automovelCriado });
       } catch (erro) {
-        res.status(500).json({ message: `${erro.message} - falha ao cadastrar veiculo` })
+        res.status(500).json({ message: `${erro.message} - Falha ao cadastrar veiculo` })
       }
     };
 
@@ -51,7 +50,7 @@ class AutomovelController {
         await automovel.findByIdAndDelete(id, req.body);
         res.status(200).json({ message: "Veiculo excluido com sucesso"});
       } catch (erro) {
-        res.status(500).json({ message: `${erro.message} - falha na exclusão` });
+        res.status(500).json({ message: `${erro.message} - Falha na exclusão` });
       }
     };
 
@@ -61,7 +60,7 @@ class AutomovelController {
         const automovelPorCor = await automovel.find({ cor: cor});
         res.status(200).json(automovelPorCor);
       } catch (erro) {
-        res.status(500).json({ message: `${erro.message} - falha na solicitação` });
+        res.status(500).json({ message: `${erro.message} - Falha na solicitação` });
       }
     };
 
@@ -71,7 +70,7 @@ class AutomovelController {
         const automovelPorMarca = await automovel.find({ marca: marca });
         res.status(200).json(automovelPorMarca);
       } catch (erro) {
-        res.status(500).json({ message: `${erro.message} - falha na solicitação` });
+        res.status(500).json({ message: `${erro.message} - Falha na solicitação` });
       }
     };
 

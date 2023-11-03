@@ -1,80 +1,57 @@
 import { automovel } from "../models/Automovel.js";
-import { motorista } from "../models/Motorista.js";
 
 class AutomovelController {
 
-    static async listarAutomoveis (req, res) {
+     static async cadastrarAutomovel (req, res) {
       try {
-        const listaAutomovel = await automovel.find({});
-        res.status(200).json(listaAutomovel);
-      } catch (erro) {
-        res.status(500).json({ message: `${erro.message} - Falha na requisição` });
-      }
+        const automovelCriado = await automovel.create(req.body);
+        res.status(201).json({ message: "Cadastro do automóvel efetuado com sucesso", Automovel: automovelCriado });
+      } catch (erro) { res.status(500).json({ message: `${erro.message} - Falha no cadastro do automóvel` }) }
     };
 
-    static async listarAutomoveisPorId (req, res) {
-      try {
-        const id = req.params.id;
-        const automovelEncontrado = await automovel.findById(id);
-        res.status(200).json(automovelEncontrado);
-      } catch (erro) {
-        res.status(500).json({ message: `${erro.message} - Falha na requisição do veiculo` });
-      }
-    };
-
-    static async cadastrarAutomoveis (req, res) {
-      const novoAutomovel = req.body;
-      try {
-        const motoristaEncontrado = await motorista.findById(novoAutomovel.motorista);
-        const cadastroCompleto = { ...novoAutomovel, motorista: { ...motoristaEncontrado._doc }};
-        const automovelCriado = await automovel.create(cadastroCompleto);
-        res.status(201).json({ message: "Cadastrado com sucesso", Automovel: automovelCriado });
-      } catch (erro) {
-        res.status(500).json({ message: `${erro.message} - Falha ao cadastrar veiculo` })
-      }
-    };
-
-    static async atualizarAutomoveis (req, res) {
+    static async atualizarAutomovel (req, res) {
       try {
         const id = req.params.id;
         await automovel.findByIdAndUpdate(id, req.body);
-        res.status(200).json({ message: "Veiculo atualizado"});
-      } catch (erro) {
-        res.status(500).json({ message: `${erro.message} - Falha na atualização do veiculo` });
-      }
+        res.status(200).json({ message: "Automóvel atualizado com sucesso"});
+      } catch (erro) { res.status(500).json({ message: `${erro.message} - Falha na atualização do automóvel` }); }
     };
 
-    static async excluirAutomoveis (req, res) {
+    static async excluirAutomovel (req, res) {
       try {
         const id = req.params.id;
         await automovel.findByIdAndDelete(id, req.body);
-        res.status(200).json({ message: "Veiculo excluido com sucesso"});
-      } catch (erro) {
-        res.status(500).json({ message: `${erro.message} - Falha na exclusão` });
-      }
+        res.status(200).json({ message: "Automóvel excluido com sucesso"});
+      } catch (erro) { res.status(500).json({ message: `${erro.message} - Falha na exclusão do automóvel` }); }
+    };
+
+    static async listarTodosAutomoveis (req, res) {
+      try {
+        const listaAutomovel = await automovel.find({});
+        res.status(200).json(listaAutomovel);
+      } catch (erro) { res.status(500).json({ message: `${erro.message} - Falha na listagem dos automóveis` }); }
+    };
+
+    static async listarAutomovelPorId (req, res) {
+      try {
+        const automovelEncontrado = await automovel.findById(req.params.id);
+        res.status(200).json(automovelEncontrado);
+      } catch (erro) { res.status(500).json({ message: `${erro.message} - Falha na busca do automóvel por Id` }); }
     };
 
     static async listarAutomoveisPorCor (req, res) {
-      const cor = req.query.cor;
       try {
-        const automovelPorCor = await automovel.find({ cor: cor});
+        const automovelPorCor = await automovel.find({ cor: req.query.cor});
         res.status(200).json(automovelPorCor);
-      } catch (erro) {
-        res.status(500).json({ message: `${erro.message} - Falha na solicitação` });
-      }
+      } catch (erro) { res.status(500).json({ message: `${erro.message} - Falha na listagem dos automóveis por cor` }); }
     };
 
     static async listarAutomoveisPorMarca (req, res) {
-      const marca = req.query.marca;
       try {
-        const automovelPorMarca = await automovel.find({ marca: marca });
+        const automovelPorMarca = await automovel.find({ marca: req.query.marca });
         res.status(200).json(automovelPorMarca);
-      } catch (erro) {
-        res.status(500).json({ message: `${erro.message} - Falha na solicitação` });
-      }
+      } catch (erro) { res.status(500).json({ message: `${erro.message} - Falha na listagem dos automóveis por marca` }); }
     };
-
-
 };
 
 export default AutomovelController;

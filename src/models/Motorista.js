@@ -6,5 +6,4 @@ const motoristaSchema = new mongoose.Schema({
 }, { versionKey: false });
 
 const motorista = mongoose.model("motoristas", motoristaSchema);
-
 export { motorista, motoristaSchema };

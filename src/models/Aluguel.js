@@ -4,13 +4,12 @@ import { automovelSchema } from  "./Automovel.js";
 
 const aluguelSchema = new mongoose.Schema({
     id: { type: mongoose.Schema.Types.ObjectId },
-    dataInicio: { type: Date, required: true },
+    dataInicio: { type: Date, default: Date.now },
     dataFinal: { type: Date },
-    motivoUtilizacao: { type: String, required: true },
+    motorista: motoristaSchema,
     automovel: automovelSchema,
-    motorista: motoristaSchema
+    motivoUtilizacao: { type: String, required: true },
 }, { versionKey: false });
 
 const aluguel = mongoose.model("aluguel", aluguelSchema);
-
 export { aluguel, aluguelSchema };

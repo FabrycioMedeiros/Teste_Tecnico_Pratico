@@ -1,0 +1,474 @@
+{
+	"info": {
+		"_postman_id": "06c79c70-214d-40a7-9028-f11532bb20d3",
+		"name": "Controle de Veiculos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30402959"
+	},
+	"item": [
+		{
+			"name": "Motorista",
+			"item": [
+				{
+					"name": "CadastrarMotorista",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"TesteExcluir\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/motorista",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"motorista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AtualizarMotorista",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"TestePratico\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/motorista/653f27518e5b28d082eea788",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"motorista",
+								"653f27518e5b28d082eea788"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExcluirMotorista",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/motorista/653f29fe8e5b28d082eea791",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"motorista",
+								"653f29fe8e5b28d082eea791"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarMotoristaPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/motorista/653f27518e5b28d082eea788",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"motorista",
+								"653f27518e5b28d082eea788"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarMotoristaPorNome",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "nome",
+								"value": "Fernando",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/motorista/busca/nome?nome=Fabrycio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"motorista",
+								"busca",
+								"nome"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "Fabrycio"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarMotorista",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/motorista/busca?nome=Renato",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"motorista",
+								"busca"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "Renato"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Automovel",
+			"item": [
+				{
+					"name": "CadastrarAutomovel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"placa\": \"NAS1234\",\r\n    \"cor\": \"Verde\",\r\n    \"marca\": \"Chevrolet\",\r\n    \"motorista\": \"653f2fb08e5b28d082eea7b2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/automovel",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"automovel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AtualizarAutomovel",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"placa\": \"NASZ234\",\r\n    \"cor\": \"Verde Escuro\",\r\n    \"marca\": \"Chevrolet\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/automovel/653f2fe78e5b28d082eea7b5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"automovel",
+								"653f2fe78e5b28d082eea7b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExcluirAutomovel",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/automovel/653f35e68e5b28d082eea7bd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"automovel",
+								"653f35e68e5b28d082eea7bd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarTodosAutomoveis",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/automovel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"automovel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarAutomovelPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/automovel/busca-marca?marca=Audi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"automovel",
+								"busca-marca"
+							],
+							"query": [
+								{
+									"key": "cor",
+									"value": "Branca",
+									"disabled": true
+								},
+								{
+									"key": "marca",
+									"value": "Audi"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarAutomovelPorCor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/automovel/cor?cor=azul",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"automovel",
+								"cor"
+							],
+							"query": [
+								{
+									"key": "cor",
+									"value": "Branca",
+									"disabled": true
+								},
+								{
+									"key": "cor",
+									"value": "azul"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarAutomovelPorMarca",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/automovel/marca?marca=Audi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"automovel",
+								"marca"
+							],
+							"query": [
+								{
+									"key": "marca",
+									"value": "Audi"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Aluguel",
+			"item": [
+				{
+					"name": "CriarRegistroDeLocacao",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dataInicio\": \"10-10-2023\",\r\n    \"dataFinal\": \"\",\r\n    \"motivoUtilizacao\": \"Viagem visita Santa Luzia-PB\",\r\n    \"automovel\": \"6543d4ffc6f4388e5f1b16d9\",\r\n    \"motorista\": \"6543d875dc0aa400b11c4721\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/aluguel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"aluguel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FinalizarRegistroDeLocacao",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/aluguel/6543d9c51f45a9b25e93551c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"aluguel",
+								"6543d9c51f45a9b25e93551c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarRegistroDeLocacao",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/aluguel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"aluguel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

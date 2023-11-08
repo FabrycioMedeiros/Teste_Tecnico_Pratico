@@ -30,7 +30,7 @@ class AluguelController {
       if (aluguel.dataFinal) { throw new Error("Este registro de utilização já foi finalizado."); }
       aluguel.dataFinal = new Date();
      
-      await aluguel.save(aluguel);
+      await aluguelModel.save(aluguel);
       res.status(201).json({ message: "Registro de utilização finalizado com sucesso" });
     } catch (erro) { res.status(500).json({ message: `${erro.message} - Falha ao finalizar registro de utilização` }); }
   };

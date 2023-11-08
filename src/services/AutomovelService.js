@@ -3,26 +3,22 @@ import { automovel } from "../models/Automovel.js";
 class AutomovelService {
   static async validarAutomovel(automovelData) {
     if (!automovelData.placa) { throw new Error("Placa é um campo obrigatório."); }
-
     if (!automovelData.cor) { throw new Error("Cor é um campo obrigatório."); }
-
     if (!automovelData.marca) { throw new Error("Marca é um campo obrigatório."); }
-
-    return automovelData;
   }
 
   static async cadastrarAutomovel(automovelData) {
     try {
-      const automovelValidado = await this.validarAutomovel(automovelData);
-      const automovelCriado = await automovel.create(automovelValidado);
+      this.validarAutomovel(automovelData);
+      const automovelCriado = await automovel.create(automovelData);
       return automovelCriado;
     } catch (erro) { throw new Error(`Falha no cadastro do automóvel: ${erro.message}`); }
   }
 
   static async atualizarAutomovel(id, automovelData) {
     try {
-      const automovelValidado = await this.validarAutomovel(automovelData);
-      const automovelAtualizado = await automovel.findByIdAndUpdate(id, automovelValidado, { new: true });
+      this.validarAutomovel(automovelData);
+      const automovelAtualizado = await automovel.findByIdAndUpdate(id, automovelData, { new: true });
 
       if (automovelAtualizado) {
         return automovelAtualizado;

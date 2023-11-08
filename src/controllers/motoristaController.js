@@ -1,4 +1,3 @@
-import { motorista } from "../models/Motorista.js";
 import MotoristaService from "../services/MotoristaService.js";
 
 class MotoristaController {

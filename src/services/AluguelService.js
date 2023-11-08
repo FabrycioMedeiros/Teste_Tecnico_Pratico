@@ -11,7 +11,7 @@ class AluguelService {
       const automovelEmUso = await aluguelModel.findOne({ automovel: automovelEncontrado, dataFinal: null });
       if (automovelEmUso) { throw new Error("Automóvel em uso, registro não permitido."); }
       const motoristaEmUso = await aluguelModel.findOne({ motorista: motoristaEncontrado, dataFinal: null });
-      if (motoristaEmUso) { throw new Error("Motorista utilizando veículo XXX(perguntar), não sendo permitido alugar 2º veiculo para este condutor ."); }
+      if (motoristaEmUso) { throw new Error(`Motorista ${motoristaEncontrado.nome} utilizando veículo, não sendo permitido alugar 2º veiculo para este condutor .`); }
       
       const registroDeUtilizacao = await aluguelModel.create({ automovel: automovelEncontrado, motorista: motoristaEncontrado, motivoUtilizacao});
       return registroDeUtilizacao;
@@ -24,8 +24,7 @@ class AluguelService {
       if (!aluguel) { throw new Error("Registro de utilização não encontrado."); }
       if (aluguel.dataFinal) { throw new Error("Registro de utilização finalizado."); }
       aluguel.dataFinal = new Date();
-      await aluguel.save();
-      return aluguel;
+      return aluguel.save();
     } catch (erro) { throw new Error(`Falha ao finalizar registro de utilização: ${erro.message}`); }
   }
 

@@ -1,4 +1,3 @@
-import { automovel } from "../models/Automovel.js";
 import AutomovelService from "../services/AutomovelService.js";
 
 class AutomovelController {

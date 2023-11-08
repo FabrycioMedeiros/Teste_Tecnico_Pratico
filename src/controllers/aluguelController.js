@@ -1,6 +1,3 @@
-import { automovel as automovelModel } from "../models/Automovel.js";
-import { motorista as motoristaModel } from "../models/Motorista.js";
-import { aluguel   as aluguelModel   } from "../models/Aluguel.js";
 import AluguelService from "../services/AluguelService.js";
 
 class AluguelController {
